@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardText, CardBody, CardTitle } from 'reactstrap';
+import { Card, CardImg , CardText, CardBody, CardTitle } from 'reactstrap';
 import { DEPARTMENTS } from '../shared/staffs';
 import dateFormat from 'dateformat';
 
@@ -22,6 +22,7 @@ class StaffList extends Component {
             return(
                     <div className="col-12 col-md-5 col-lg-3 m-1 float-left">
                         <Card>
+                            <CardImg width="100%" src={staff.image} alt={staff.name} />
                             <CardBody>
                                 <CardTitle><h5>Họ và tên: {staff.name}</h5></CardTitle>
                                 <CardText>Ngày sinh: {dateFormat(staff.doB, "dd/mm/yyyy")}</CardText>
