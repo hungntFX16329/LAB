@@ -3,15 +3,14 @@ import { Navbar, NavbarBrand } from 'reactstrap';
 import StaffList from './components/StaffListComponent';
 import './App.css';
 import { Component } from 'react';
-import { STAFFS, DEPARTMENTS } from './shared/staffs';
+import { STAFFS} from './shared/staffs';
 
 
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      staffs : STAFFS,
-      department: DEPARTMENTS
+      staffs : STAFFS
     };
   }
   render(){
