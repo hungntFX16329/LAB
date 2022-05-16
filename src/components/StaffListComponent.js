@@ -20,7 +20,7 @@ class StaffList extends Component {
     renderDish(staff){
         if (staff !=null){
             return(
-                    <div className="col-12 col-md-3 col-lg-3 m-1 float-left">
+                    <div className="col-12 col-md-5 col-lg-3 m-1 float-left">
                         <Card>
                             <CardBody>
                                 <CardTitle><h5>Họ và tên: {staff.name}</h5></CardTitle>
@@ -44,7 +44,7 @@ class StaffList extends Component {
     render(){
         const menu=this.props.staffs.map((staff)=>{
             return (
-                <div key={staff.id} className="col-sm-12 col-md-4 col-lg-3 m-1">
+                <div key={staff.id} className="col-12 col-md-5 col-lg-3 m-1">
                     <Card onClick={()=>this.onDishSeclect(staff)}>
                             <CardTitle>{staff.name}</CardTitle>
                     </Card>
