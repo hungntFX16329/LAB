@@ -23,7 +23,7 @@ class StaffList extends Component {
     renderStaff(staff){
         if (staff !=null){
             return(
-                    <div className="col-12 col-md-5 col-lg-3 m-1">
+                    <div className="col-12">
                         <Card>
                             <CardImg width="100%" src={staff.image} alt={staff.name} />
                             <CardBody>
@@ -59,11 +59,11 @@ class StaffList extends Component {
         return (
             <div className="container">
                 <div className='mt-3 mb-3'>
-                    <button onClick={()=>this.onColumnSelect("col-md-2 mt-1")} type="button" className="btn btn-outline-primary">6 Column</button>
-                    <button onClick={()=>this.onColumnSelect("col-md-3 mt-1")} type="button" className="btn btn-outline-primary">4 Column</button>
-                    <button onClick={()=>this.onColumnSelect("col-md-4 mt-1")} type="button" className="btn btn-outline-primary">3 Column</button>
-                    <button onClick={()=>this.onColumnSelect("col-md-6 mt-1")} type="button" className="btn btn-outline-primary">2 Column</button>
-                    <button onClick={()=>this.onColumnSelect("col-md-12 mt-1")} type="button" className="btn btn-outline-primary">1 Column</button>
+                    <button onClick={()=>this.onColumnSelect("col-md-2 mt-1")} type="button" className="btn btn-outline-primary mr-3">6 Cột</button>
+                    <button onClick={()=>this.onColumnSelect("col-md-3 mt-1")} type="button" className="btn btn-outline-primary mr-3">4 Cột</button>
+                    <button onClick={()=>this.onColumnSelect("col-md-4 mt-1")} type="button" className="btn btn-outline-primary mr-3">3 Cột</button>
+                    <button onClick={()=>this.onColumnSelect("col-md-6 mt-1")} type="button" className="btn btn-outline-primary mr-3">2 Cột</button>
+                    <button onClick={()=>this.onColumnSelect("col-md-12 mt-1")} type="button" className="btn btn-outline-primary mr-3">1 Cột</button>
                 </div>
                 <div className="row">
                     {menu}
