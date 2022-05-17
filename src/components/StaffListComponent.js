@@ -59,11 +59,11 @@ class StaffList extends Component {
         return (
             <div className="container">
                 <div className='mt-3 mb-3'>
-                <button onClick={()=>this.onColumnSelect("col-md-2 mt-1")} type="button" className="btn btn-outline-primary">6 Column</button>
-                <button onClick={()=>this.onColumnSelect("col-md-3 mt-1")} type="button" className="btn btn-outline-primary">4 Column</button>
-                <button onClick={()=>this.onColumnSelect("col-md-4 mt-1")} type="button" className="btn btn-outline-primary">3 Column</button>
-                <button onClick={()=>this.onColumnSelect("col-md-6 mt-1")} type="button" className="btn btn-outline-primary">2 Column</button>
-                <button onClick={()=>this.onColumnSelect("col-md-12 mt-1")} type="button" className="btn btn-outline-primary">1 Column</button>
+                    <button onClick={()=>this.onColumnSelect("col-md-2 mt-1")} type="button" className="btn btn-outline-primary">6 Column</button>
+                    <button onClick={()=>this.onColumnSelect("col-md-3 mt-1")} type="button" className="btn btn-outline-primary">4 Column</button>
+                    <button onClick={()=>this.onColumnSelect("col-md-4 mt-1")} type="button" className="btn btn-outline-primary">3 Column</button>
+                    <button onClick={()=>this.onColumnSelect("col-md-6 mt-1")} type="button" className="btn btn-outline-primary">2 Column</button>
+                    <button onClick={()=>this.onColumnSelect("col-md-12 mt-1")} type="button" className="btn btn-outline-primary">1 Column</button>
                 </div>
                 <div className="row">
                     {menu}
