@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardImg , CardText, CardBody, CardTitle } from 'reactstrap';
+import { Card, CardImg , CardText, CardBody, CardTitle, Alert } from 'reactstrap';
 import { DEPARTMENTS } from '../shared/staffs';
 import dateFormat from 'dateformat';
 
@@ -49,7 +49,7 @@ class StaffList extends Component {
         const menu=this.props.staffs.map((staff)=>{
             return (
                 <div key={staff.id} className={this.state.columnDefault}>
-                    <Card onClick={()=>this.onStaffSeclect(staff)} body inverse color="primary">
+                    <Card onClick={()=>this.onStaffSeclect(staff)} body color="light" className="rounded-3 shadow-sm">
                             <CardTitle className="text-center">{staff.name}</CardTitle>
                     </Card>
                 </div>
@@ -69,8 +69,10 @@ class StaffList extends Component {
                     {menu}
                 </div>
                 
-                <div className="row">
-                    Bấm vào tên nhân viên để xem thông tin
+                <div className="row mt-3 mb-3 ml-1">
+                    <Alert color="primary">
+                        Bấm vào tên nhân viên để xem thông tin
+                    </Alert>
                 </div>
                 
                 <div className="row">
