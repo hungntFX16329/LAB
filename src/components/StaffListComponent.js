@@ -50,7 +50,8 @@ class StaffList extends Component {
             return (
                 <div key={staff.id} className={this.state.columnDefault}>
                     <Card onClick={()=>this.onStaffSeclect(staff)} body color="light" className="rounded-3 shadow-sm">
-                            <CardTitle className="text-center">{staff.name}</CardTitle>
+                            <CardTitle className="text-center card-header">{staff.name}</CardTitle>
+                            <CardImg width="100%" src='assets/images/staff.png' alt={staff.name} />
                     </Card>
                 </div>
             )
