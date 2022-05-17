@@ -11,16 +11,19 @@ class StaffList extends Component {
         this.state = {
             selectedStaff: null,
             department: DEPARTMENTS,
+            columnDefault: "col-12 col-md-5 col-lg-3 m-1"
         }
     }
-    onDishSeclect(staff){
+    onStaffSeclect(staff){
         this.setState({ selectedStaff: staff});
     }
-    
-    renderDish(staff){
+    onColumnSelect(col){
+        this.setState({columnDefault: col})
+    }
+    renderStaff(staff){
         if (staff !=null){
             return(
-                    <div className="col-12 col-md-5 col-lg-3 m-1 float-left">
+                    <div className="col-12 col-md-5 col-lg-3 m-1">
                         <Card>
                             <CardImg width="100%" src={staff.image} alt={staff.name} />
                             <CardBody>
@@ -43,27 +46,36 @@ class StaffList extends Component {
     }
    
     render(){
+        
         const menu=this.props.staffs.map((staff)=>{
             return (
-                <div key={staff.id} className="col-12 col-md-5 col-lg-3 m-1">
-                    <Card onClick={()=>this.onDishSeclect(staff)}>
+                <div key={staff.id} className={this.state.columnDefault}>
+                    <Card onClick={()=>this.onStaffSeclect(staff)}>
                             <CardTitle>{staff.name}</CardTitle>
                     </Card>
                 </div>
             )
-            
         });
-    
+        
         return (
             <div className="container">
+                <div className='mt-3 mb-3'>
+                <button onClick={()=>this.onColumnSelect("col-12 col-md-5 col-lg-6 m-1")} type="button" className="btn btn-outline-primary">6 Column</button>
+                <button onClick={()=>this.onColumnSelect("col-12 col-md-5 col-lg-4 m-1")} type="button" className="btn btn-outline-primary">4 Column</button>
+                <button onClick={()=>this.onColumnSelect("col-12 col-md-5 col-lg-3 m-1")} type="button" className="btn btn-outline-primary">3 Column</button>
+                <button onClick={()=>this.onColumnSelect("col-12 col-md-5 col-lg-2 m-1")} type="button" className="btn btn-outline-primary">2 Column</button>
+                <button onClick={()=>this.onColumnSelect("col-12 col-md-5 col-lg-1 m-1")} type="button" className="btn btn-outline-primary">1 Column</button>
+                </div>
                 <div className="row">
                     {menu}
                 </div>
+                
                 <div className="row">
                     Bấm vào tên nhân viên để xem thông tin
                 </div>
+                
                 <div className="row">
-                    {this.renderDish(this.state.selectedStaff)}
+                    {this.renderStaff(this.state.selectedStaff)}
                 </div>
             </div>
         );
