@@ -46,7 +46,6 @@ class StaffList extends Component {
     }
    
     render(){
-        
         const menu=this.props.staffs.map((staff)=>{
             return (
                 <div key={staff.id} className={this.state.columnDefault}>
@@ -60,11 +59,11 @@ class StaffList extends Component {
         return (
             <div className="container">
                 <div className='mt-3 mb-3'>
-                <button onClick={()=>this.onColumnSelect("col-12 col-md-5 col-lg-6 m-1")} type="button" className="btn btn-outline-primary">6 Column</button>
-                <button onClick={()=>this.onColumnSelect("col-12 col-md-5 col-lg-4 m-1")} type="button" className="btn btn-outline-primary">4 Column</button>
-                <button onClick={()=>this.onColumnSelect("col-12 col-md-5 col-lg-3 m-1")} type="button" className="btn btn-outline-primary">3 Column</button>
-                <button onClick={()=>this.onColumnSelect("col-12 col-md-5 col-lg-2 m-1")} type="button" className="btn btn-outline-primary">2 Column</button>
-                <button onClick={()=>this.onColumnSelect("col-12 col-md-5 col-lg-1 m-1")} type="button" className="btn btn-outline-primary">1 Column</button>
+                <button onClick={()=>this.onColumnSelect("col-md-2 mt-1")} type="button" className="btn btn-outline-primary">6 Column</button>
+                <button onClick={()=>this.onColumnSelect("col-md-3 mt-1")} type="button" className="btn btn-outline-primary">4 Column</button>
+                <button onClick={()=>this.onColumnSelect("col-md-4 mt-1")} type="button" className="btn btn-outline-primary">3 Column</button>
+                <button onClick={()=>this.onColumnSelect("col-md-6 mt-1")} type="button" className="btn btn-outline-primary">2 Column</button>
+                <button onClick={()=>this.onColumnSelect("col-md-12 mt-1")} type="button" className="btn btn-outline-primary">1 Column</button>
                 </div>
                 <div className="row">
                     {menu}
