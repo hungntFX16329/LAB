@@ -49,8 +49,8 @@ class StaffList extends Component {
         const menu=this.props.staffs.map((staff)=>{
             return (
                 <div key={staff.id} className={this.state.columnDefault}>
-                    <Card onClick={()=>this.onStaffSeclect(staff)}>
-                            <CardTitle>{staff.name}</CardTitle>
+                    <Card onClick={()=>this.onStaffSeclect(staff)} body inverse color="primary">
+                            <CardTitle className="text-center">{staff.name}</CardTitle>
                     </Card>
                 </div>
             )

@@ -1,6 +1,5 @@
 //import logo from './logo.svg';
 import { Navbar, NavbarBrand } from 'reactstrap';
-import { Card, CardImg , CardText, CardBody, CardTitle } from 'reactstrap';
 import StaffList from './components/StaffListComponent';
 import './App.css';
 import { Component } from 'react';
