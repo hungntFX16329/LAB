@@ -7,6 +7,34 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Hello World</h1>
+    <h1>Hello</h1>
+    <script>
+       let a ={
+           id : 01,
+           name : 'hung'
+       }
+       function getName(){
+           console.log('Hello'+a.name+'!');
+       }
+       getName()
+
+       class Name{
+           constructor(age,firstname){
+            this.age = age,
+            this.firstname = firstname
+           }
+           getName = ()=> {
+               console.log(this.firstname)
+           }
+       }
+       a = new Name()
+       a.getName
+
+       let data = fetch('https://jsonplaceholder.typicode.com/todos/100')
+       let result = data.then(response =>
+           response.json())
+        result.then(data =>{console.log(data);})
+
+    </script>
 </body>
 </html>
