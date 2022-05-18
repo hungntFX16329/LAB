@@ -77,7 +77,9 @@ class StaffList extends Component {
                 </div>
                 
                 <div className="row">
-                    {this.renderStaff(this.state.selectedStaff)}
+                    <div className="row mt-3 mb-3 ml-1">
+                        {this.renderStaff(this.state.selectedStaff)}
+                    </div>
                 </div>
             </div>
         );
