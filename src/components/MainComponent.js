@@ -6,7 +6,8 @@ import Footer from './FooterComponent';
 import Contact from './ContactComponent';
 import About from './AboutComponent';
 import DishDetail from './DishdetailComponent';
-import NhanVien from './StaffListComponent'
+import NhanVien from './StaffListComponent';
+import PhongBan from './DepartmentComponent';
 import StaffDetail from './StaffDetailComponent'
 import { DISHES } from '../shared/dishes';
 import { COMMENTS } from '../shared/comments';
@@ -27,25 +28,13 @@ class Main extends Component {
       promotions: PROMOTIONS,
       leaders: LEADERS,
       staffs : STAFFS,
-      department: DEPARTMENTS
+      departments: DEPARTMENTS
     };
   }
 
 
   render(){
 
-    /*
-    const NhanVien = ()=>{
-      return(
-        <h1>Nhan vien o day !</h1>
-      )
-    }
-    */
-    const PhongBan = ()=>{
-      return(
-        <h1>Phong ban o day !</h1>
-      )
-    }
     const BangLuong = ()=>{
       return(
         <h1>Bang luong o day !</h1>
@@ -66,7 +55,7 @@ class Main extends Component {
           <Route exact path="/nhanvien" component={()=><NhanVien staffs={this.state.staffs} />} />
           <Route exact path="/menu" component={()=><Menu dishes={this.state.dishes} />}/>
           <Route path="/nhanvien/:staffId" component={StaffWithId}/>
-          <Route exact path="/phongban" component={PhongBan} />
+          <Route exact path="/phongban" component={()=><PhongBan department={this.state.departments}/>} />
           <Route path="/bangluong" component={BangLuong} />
           <Redirect to="/nhanvien" />
         </Switch>

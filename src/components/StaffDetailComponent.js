@@ -7,10 +7,10 @@ import dateFormat from 'dateformat';
 function RenderDish({staff}){
     return(
         <Media tag="li">
-            <Media left middle className="col-md-3 col-lg-4 mt-1 mb-3">
+            <Media left middle className="col-md-4 col-lg-3 mt-1 mb-3">
                 <img width="100%" src={staff.image} alt={staff.name} />
             </Media>
-            <Media body className="col-md-9 col-lg-8 ml-5 mt-1">
+            <Media body className="col-md-8 col-lg-9 ml-5 mt-1">
                 <Media heading>Họ và tên: {staff.name}</Media>
                 <p>Ngày sinh: {dateFormat(staff.doB, "dd/mm/yyyy")}</p>
                 <p>Ngày vào công ty: {dateFormat(staff.startDate, "dd/mm/yyyy")}</p>
