@@ -1,8 +1,52 @@
 import React, { Component } from 'react';
-import { Card, CardImg , CardText, CardBody, CardTitle, Alert } from 'reactstrap';
+import { Card, CardImg , CardText, CardBody, CardTitle, Alert,Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import { DEPARTMENTS } from '../shared/staffs';
 import dateFormat from 'dateformat';
+import { Link } from 'react-router-dom';
 
+
+function RenderMenuItem({staff}){
+    return (
+        <Card>
+            <Link to={`/nhanvien/${staff.id}`} >
+            <CardTitle className="text-center card-header">{staff.name}</CardTitle>
+            <CardImg width="50%" src={staff.image} alt={staff.name} />
+            </Link>
+        </Card>
+    )
+}
+
+const NhanVien = (props)=> {
+    const staff=props.staffs.map((staff)=>{
+        return (
+            <div key={staff.id} className="col-12 col-md-2 mt-1">
+               <RenderMenuItem staff={staff}/>
+            </div>
+        )
+    });
+
+    return (
+        <div className="container">
+            <div className="row">
+                <Breadcrumb>
+                    <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
+                    <BreadcrumbItem active>Nhân viên</BreadcrumbItem>
+                </Breadcrumb>
+                <div className="col-12">
+                    <h3>Nhân viên</h3>
+                    <hr />
+                </div>
+            </div>
+            <div className="row">
+                {staff}
+            </div>
+        </div> 
+    );
+}
+ 
+export default NhanVien;
+
+/*
 class StaffList extends Component {
 
     constructor(props){
@@ -88,3 +132,4 @@ class StaffList extends Component {
 }
 
 export default StaffList;
+*/
