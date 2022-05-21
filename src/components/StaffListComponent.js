@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardImg, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Card, CardImg, CardTitle} from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 
@@ -26,10 +26,6 @@ const NhanVien = (props)=> {
     return (
         <div className="container">
             <div className="row">
-                <Breadcrumb>
-                    <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
-                    <BreadcrumbItem active>Nhân viên</BreadcrumbItem>
-                </Breadcrumb>
                 <div className="col-12">
                     <h3>Nhân viên</h3>
                     <hr />
