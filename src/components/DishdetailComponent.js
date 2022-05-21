@@ -45,6 +45,7 @@ import { Link } from 'react-router-dom';
     }
 
     const DishDetail = (props)=>{
+        console.log(props);
         if(props.dish !=null)
             return (
             <div className="container">
@@ -63,7 +64,7 @@ import { Link } from 'react-router-dom';
                         <RenderDish dish={props.dish} />
                     </div>
                     <div className="col-12 col-md-5 m-1">
-                        <RenderComment commentArray={props.comment} />
+                        <RenderComment commentArray={props.comments} />
                     </div>
                 </div> 
             </div>
