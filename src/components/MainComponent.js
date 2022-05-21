@@ -7,11 +7,13 @@ import Contact from './ContactComponent';
 import About from './AboutComponent';
 import DishDetail from './DishdetailComponent';
 import NhanVien from './StaffListComponent'
+import StaffDetail from './StaffDetailComponent'
 import { DISHES } from '../shared/dishes';
 import { COMMENTS } from '../shared/comments';
 import { LEADERS } from '../shared/leaders';
 import { PROMOTIONS } from '../shared/promotions';
 import { STAFFS} from '../shared/staffs';
+import { DEPARTMENTS } from '../shared/staffs';
 import { Switch, Route, Redirect} from 'react-router-dom';
 
 
@@ -24,7 +26,8 @@ class Main extends Component {
       comments: COMMENTS,
       promotions: PROMOTIONS,
       leaders: LEADERS,
-      staffs : STAFFS
+      staffs : STAFFS,
+      department: DEPARTMENTS
     };
   }
 
@@ -53,8 +56,7 @@ class Main extends Component {
     const StaffWithId = ({match})=>{
       console.log(match);
       return (
-        <DishDetail dish={this.state.dishes.filter((dish)=>dish.id === parseInt(match.params.dishId,10))[0]}
-        comments={this.state.comments.filter((comment)=> comment.dishId === parseInt(match.params.dishId,10))}/>
+        <StaffDetail staff={this.state.staffs.filter((staff)=>staff.id === parseInt(match.params.staffId,10))}/>
       )
     }
 
