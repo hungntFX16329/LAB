@@ -17,6 +17,7 @@ import { Link } from 'react-router-dom';
 
 
     function RenderComment({commentArray}){
+        console.log(commentArray);
         let comment = commentArray.map((comments)=>{
             if (comments != null)
                 return (
@@ -63,7 +64,7 @@ import { Link } from 'react-router-dom';
                         <RenderDish dish={props.dish} />
                     </div>
                     <div className="col-12 col-md-5 m-1">
-                        <RenderComment commentArray={props.comment} />
+                        <RenderComment commentArray={props.comments} />
                     </div>
                 </div> 
             </div>

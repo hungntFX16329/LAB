@@ -22,7 +22,7 @@ function ListLeader(props){
 
     const renderLeader = props.leaders.map((leader) => {
         return (
-            <div className="col-12 mt-2">
+            <div key={leader.id} className="col-12 mt-2">
                 <RenderLeader leader={leader}/>
             </div>
         );
