@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardBody, CardTitle} from 'reactstrap';
+import { Card, CardBody, CardHeader} from 'reactstrap';
 
 function PhongBan(props){
 
@@ -7,7 +7,7 @@ function PhongBan(props){
         return(
             <div key={departments.id} className="col-12 col-md-6 col-lg-4 mt-2 mb-2">
                 <Card>
-                    <CardTitle>{departments.name}</CardTitle>
+                    <CardHeader className="text-center">{departments.name}</CardHeader>
                     <CardBody>Số lượng nhân viên: {departments.numberOfStaff}</CardBody>
                 </Card>
             </div>

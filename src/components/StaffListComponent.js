@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardImg, CardTitle} from 'reactstrap';
+import { Card, CardBody, CardImg} from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 
@@ -8,7 +8,7 @@ function RenderMenuItem({staff}){
         <Card>
             <Link to={`/nhanvien/${staff.id}`} >
             <CardImg width="50%" src={staff.image} alt={staff.name} />
-            <CardTitle className="text-center card-header">{staff.name}</CardTitle>
+            <CardBody className="text-center card-header">{staff.name}</CardBody>
             </Link>
         </Card>
     )
