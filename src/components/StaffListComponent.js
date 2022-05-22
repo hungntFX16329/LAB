@@ -7,8 +7,8 @@ function RenderMenuItem({staff}){
     return (
         <Card>
             <Link to={`/nhanvien/${staff.id}`} >
-            <CardTitle className="text-center card-header">{staff.name}</CardTitle>
             <CardImg width="50%" src={staff.image} alt={staff.name} />
+            <CardTitle className="text-center card-header">{staff.name}</CardTitle>
             </Link>
         </Card>
     )

@@ -5,7 +5,7 @@ function PhongBan(props){
 
     let phongban = props.department.map((departments)=>{
         return(
-            <div key={departments.id} className="col-md-6 col-lg-4 mt-2">
+            <div key={departments.id} className="col-12 col-md-6 col-lg-4 mt-2 mb-2">
                 <Card>
                     <CardTitle>{departments.name}</CardTitle>
                     <CardBody>Số lượng nhân viên: {departments.numberOfStaff}</CardBody>
@@ -15,7 +15,7 @@ function PhongBan(props){
     })
     return(
         <div className="container">
-            <div className="row mt-1 mb-2">
+            <div className="row shadow m-3">
                 {phongban}
             </div>
         </div>
