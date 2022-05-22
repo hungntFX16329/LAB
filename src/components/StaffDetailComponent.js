@@ -1,24 +1,26 @@
 import React from 'react';
-import { Breadcrumb, BreadcrumbItem, Media } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, CardText, CardTitle} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import dateFormat from 'dateformat';
 
 
-function RenderDish({staff}){
+function RenderStaff({staff}){
     return(
-        <Media tag="li">
-            <Media left middle className="col-md-4 col-lg-3 mt-1 mb-3">
-                <img width="100%" src={staff.image} alt={staff.name} />
-            </Media>
-            <Media body className="col-md-8 col-lg-9 ml-5 mt-1">
-                <Media heading>Họ và tên: {staff.name}</Media>
-                <p>Ngày sinh: {dateFormat(staff.doB, "dd/mm/yyyy")}</p>
-                <p>Ngày vào công ty: {dateFormat(staff.startDate, "dd/mm/yyyy")}</p>
-                <p>Phòng ban: {staff.department.name}</p>
-                <p>Số ngày nghỉ còn lại: {staff.annualLeave}</p>
-                <p>Số ngày đã làm thêm: {staff.overTime}</p>
-            </Media>
-        </Media>
+        <div className="col-12">
+            <div className="row">
+                <div className="col-3">
+                    <img width="100%" src={staff.image} alt={staff.name} />
+                </div>
+                <div className="col-9">
+                    <CardTitle>Họ và tên: {staff.name}</CardTitle>
+                    <CardText>Ngày sinh: {dateFormat(staff.doB, "dd/mm/yyyy")}</CardText>
+                    <CardText>Ngày vào công ty: {dateFormat(staff.startDate, "dd/mm/yyyy")}</CardText>
+                    <CardText>Phòng ban: {staff.department.name}</CardText>
+                    <CardText>Số ngày nghỉ còn lại: {staff.annualLeave}</CardText>
+                    <CardText>Số ngày đã làm thêm: {staff.overTime}</CardText>
+                </div>
+            </div>
+        </div>
     );
 }
 
@@ -33,10 +35,8 @@ const StaffDetail = (props)=>{
                     <BreadcrumbItem active>{props.staff[0].name}</BreadcrumbItem>
                 </Breadcrumb>
         </div>
-            <div className="row">
-                <div className="col-12">
-                    <RenderDish staff={props.staff[0]} />
-                </div>
+            <div className="row mb-3">
+                <RenderStaff staff={props.staff[0]} />
             </div> 
         </div>
     )

@@ -3,10 +3,10 @@ import { Card, CardText, CardBody, CardFooter, Breadcrumb, BreadcrumbItem, CardH
 import { Link } from 'react-router-dom';
 
 function BangLuong(props){
-    let [hesoluong,sethesoluong] = useState(true)
+    let [ma_nhan_vien,set_ma_nhan_vien] = useState(true)
 
     let bangluong = props.salary
-    .sort((a,b)=> hesoluong ? a.salaryScale - b.salaryScale : b.salaryScale - a.salaryScale)
+    .sort((a,b)=> ma_nhan_vien ? a.id - b.id : b.id - a.id)
     .map((staff)=>{
         return(
             <div key={staff.id} className="col-12 col-md-6 col-lg-4 mt-2 mb-2 rounded-3" body color="light">
@@ -33,8 +33,8 @@ function BangLuong(props){
                 </Breadcrumb>
             </div>
 
-            <button className="btn btn-primary" onClick={()=> sethesoluong(!hesoluong)}>
-                Sắp xếp theo hệ số lương
+            <button className="btn btn-primary" onClick={()=> set_ma_nhan_vien(!ma_nhan_vien)}>
+                Sắp xếp theo mã nhân viên
             </button>
            
             <div className="row shadow mb-3">
