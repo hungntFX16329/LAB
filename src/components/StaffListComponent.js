@@ -17,11 +17,7 @@ class NhanVien extends Component{
             doB: '',
             salaryScale:1,
             startDate:'',
-            department: {
-                id: "Dept01",
-                name: "Sale",
-                numberOfStaff: 1
-            },
+            department: '',
             annualLeave:0,
             overTime:0,
             touched: {
@@ -64,6 +60,7 @@ class NhanVien extends Component{
             overTime: value.overTime,
             image:'/assets/images/alberto.png'
         }
+        console.log(newStaff);
         this.props.onAdd(newStaff)
     }
 
@@ -203,6 +200,7 @@ class NhanVien extends Component{
                                 name="department"
                                 className="form-control"
                                 >
+                                    <option></option>
                                     <option>Sale</option>
                                     <option>HR</option>
                                     <option>Marketing</option>
