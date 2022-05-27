@@ -15,7 +15,7 @@ class NhanVien extends Component{
             input: '',
             name: '',
             doB: '',
-            salaryScale:1,
+            salaryScale:'',
             startDate:'',
             department: '',
             annualLeave:0,
@@ -211,11 +211,12 @@ class NhanVien extends Component{
                             <Row className="form-group">
                                 <Label htmlFor="salaryScale" sm={4}>Hệ số lương</Label>
                                 <Col sm={8}>
-                                <Control.text 
+                                <Control type="number" 
                                 model=".salaryScale" 
                                 id="salaryScale" 
                                 name="salaryScale"
                                 placeholder="1.0 -> 3.0"
+                                value={this.state.tenState}
                                 className="form-control"
                                 />
                                 </Col>
@@ -223,11 +224,12 @@ class NhanVien extends Component{
                             <Row className="form-group">
                                 <Label htmlFor="annualLeave" sm={4}>Số ngày nghỉ còn lại</Label>
                                 <Col sm={8}>
-                                <Control.text 
+                                <Control type="number" 
                                 model=".annualLeave" 
                                 id="annualLeave" 
                                 name="annualLeave"
                                 placeholder="Số ngày nghỉ còn lại"
+                                value={this.state.tenState}
                                 className="form-control"
                                />
                                 </Col>
@@ -235,14 +237,14 @@ class NhanVien extends Component{
                             <Row className="form-group">
                                 <Label htmlFor="overTime" sm={4}>Số ngày đã làm thêm</Label>
                                 <Col sm={8}>
-                                <Control.text 
+                                <Control type="number" 
                                 model=".overTime" 
                                 id="overTime" 
                                 name="overTime"
                                 placeholder="Số ngày đã làm thêm"
+                                value={this.state.tenState}
                                 className="form-control"
                                 />
-                                
                                 </Col>
                             </Row>
                             <Row className="form-group">
