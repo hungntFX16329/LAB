@@ -65,7 +65,6 @@ class NhanVien extends Component{
             overTime: this.state.overTime,
             image:'/assets/images/alberto.png'
         }
-        console.log(newStaff);
         if(!this.state.doB || !this.state.startDate || !this.state.name){
             this.setState({
                 touched: {
