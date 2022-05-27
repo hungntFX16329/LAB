@@ -27,12 +27,12 @@ class Header extends Component {
         return(
             <div>
             <div>
-                <Navbar light expand="md">
+                <Navbar dark expand="md">
                     <div className="container">
                         <NavbarToggler onClick={this.toggleNav} />
                         <NavbarBrand className="mr-auto" href="/"><img src="assets/images/logo.png" height="30" width="41" alt="Ristorante Con Fusion" /></NavbarBrand>
                         <Collapse isOpen={this.state.isNavOpen} navbar>
-                            <Nav navbar className="nav nav-pills">
+                            <Nav navbar>
                                 <NavItem>
                                     <NavLink className="nav-link" to="/nhanvien"><span className="fa fa-users fa-lg"></span> Nhân viên</NavLink>
                                 </NavItem>
@@ -47,7 +47,7 @@ class Header extends Component {
                     </div>
                 </Navbar>
             </div>
-            <div className="divider mb-3 mt-3"></div>
+          
             </div>
         )
     }

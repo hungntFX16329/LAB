@@ -1,10 +1,7 @@
 import React from "react";
 
-
 function Footer(){
-    return(
-        <div>
-            <div className="divider mt-3"></div>
+    return(    
         <div className="footer">
             <div className="container">
                 <div className="row justify-content-center">             
@@ -38,7 +35,7 @@ function Footer(){
                 </div>
             </div>
         </div> 
-        </div> 
+
     )
 }
 

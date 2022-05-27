@@ -12,11 +12,7 @@ class NhanVien extends Component{
             doB: '',
             salaryScale:1,
             startDate:'',
-            department: {
-                id: "Dept01",
-                name: "Sale",
-                numberOfStaff: 1
-            },
+            department: 'Sale',
             annualLeave:0,
             overTime:0,
             touched: {
@@ -53,7 +49,8 @@ class NhanVien extends Component{
         event.preventDefault();
     }
 
-    handleSubmit = ()=>{
+    handleSubmit = (event)=>{
+        event.preventDefault();
         const newStaff = {
             name: this.state.name,
             doB: this.state.doB,
@@ -68,7 +65,17 @@ class NhanVien extends Component{
             overTime: this.state.overTime,
             image:'/assets/images/alberto.png'
         }
-        this.props.onAdd(newStaff)
+        console.log(newStaff);
+        if(!this.state.doB || !this.state.startDate || !this.state.name){
+            this.setState({
+                touched: {
+                    name:true,
+                    doB: true,
+                    startDate: true
+                }
+            })
+        }
+        else this.props.onAdd(newStaff)
     }
 
 
@@ -219,7 +226,7 @@ class NhanVien extends Component{
                                 type="select" 
                                 id="department" 
                                 name="department"
-                                value={this.state.department.name} 
+                                value={this.state.department} 
                                 onBlur={this.handleBlur('department')}
                                 onChange={this.handleInputChange}>
                                     <option>Sale</option>
