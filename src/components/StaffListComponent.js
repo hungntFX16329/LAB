@@ -60,7 +60,6 @@ class NhanVien extends Component{
             overTime: value.overTime,
             image:'/assets/images/alberto.png'
         }
-        console.log(newStaff);
         this.props.onAdd(newStaff)
     }
 
