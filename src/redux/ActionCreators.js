@@ -20,15 +20,15 @@ export const fetchDishes = ()=> (dispatch) => {
 }
 
 export const dishesLoading = ()=> ({
-    type : ActionTypes.DISH_LOADING
+    type : ActionTypes.DISHES_LOADING
 })
 
 export const dishesFailed = (errmess) => ({
-    type : ActionTypes.DISH_FAILED,
+    type : ActionTypes.DISHES_FAILED,
     payload : errmess
 })
 
 export const addDishes = (dishes)=>({
-    type : ActionTypes.ADD_COMMENT,
+    type : ActionTypes.ADD_DISHES,
     payload : dishes
 })
