@@ -42,8 +42,6 @@ import { LocalForm,Control, Errors } from 'react-redux-form';
     }
 
     const DishDetail = (props)=>{
-        console.log(props.addComment);
-        console.log(props.dish.id);
         if(props.dish !=null)
             return (
             <div className="container">
@@ -127,11 +125,11 @@ class CommentForm extends Component {
                         </Row>
                         <Row className="form-group">
                             <Col>
-                            <Label htmlFor="name">Your name</Label>
+                            <Label htmlFor="author">Your name</Label>
                             <Control.text 
-                            model=".name"
-                            id="name"
-                            name="name"
+                            model=".author"
+                            id="author"
+                            name="author"
                             placeholder="Your name"
                             className="form-control"
                             validators={{
@@ -139,7 +137,7 @@ class CommentForm extends Component {
                             }}/>
                             <Errors
                             className="text-danger"
-                            model=".name"
+                            model=".author"
                             show="touched"
                             messages={{
                                 minLength: 'Must be greater than 2 characters',
