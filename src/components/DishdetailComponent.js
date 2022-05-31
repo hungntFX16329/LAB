@@ -20,7 +20,7 @@ import { baseUrl } from '../shared/baseUrl'
     }
 
 
-    function RenderComment({commentArray, addComment, dishId}){
+    function RenderComment({commentArray, postComment, dishId}){
             if (commentArray != null)
                 return (
                     <div className="col-12 col-md-5 m-1">
@@ -35,7 +35,7 @@ import { baseUrl } from '../shared/baseUrl'
                                 )
                             })}
                         </ul>
-                        <CommentForm dishId={dishId} addComment={addComment}/>
+                        <CommentForm dishId={dishId} postComment={postComment}/>
                     </div>
                 )
             else {
@@ -78,7 +78,7 @@ import { baseUrl } from '../shared/baseUrl'
                 <div className="row">
                     <RenderDish dish={props.dish} />
                     <RenderComment commentArray={props.comments} 
-                        addComment={props.addComment}
+                        postComment={props.postComment}
                         dishId={props.dish.id}/> 
                 </div> 
             </div>
@@ -114,7 +114,7 @@ class CommentForm extends Component {
 
     handleSubmit(values){
         this.toggleModel();
-        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment)
+        this.props.postComment(this.props.dishId, values.rating, values.author, values.comment)
     }
 
     render(){
@@ -145,11 +145,11 @@ class CommentForm extends Component {
                         </Row>
                         <Row className="form-group">
                             <Col>
-                            <Label htmlFor="name">Your name</Label>
+                            <Label htmlFor="author">Your name</Label>
                             <Control.text 
-                            model=".name"
-                            id="name"
-                            name="name"
+                            model=".author"
+                            id="author"
+                            name="author"
                             placeholder="Your name"
                             className="form-control"
                             validators={{
@@ -157,7 +157,7 @@ class CommentForm extends Component {
                             }}/>
                             <Errors
                             className="text-danger"
-                            model=".name"
+                            model=".author"
                             show="touched"
                             messages={{
                                 minLength: 'Must be greater than 2 characters',
