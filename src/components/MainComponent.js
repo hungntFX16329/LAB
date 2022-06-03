@@ -7,32 +7,34 @@ import BangLuong from './SalaryComponent';
 import StaffDetail from './StaffDetailComponent';
 import DepartmentDetail from './DepartmentDetailComponent';
 import { connect } from 'react-redux';
-import { postStaff, fetchStaffs, fetchDeapartments } from '../redux/ActionCreators';
+import { postStaff, fetchStaffs, fetchDeapartments,fetchSalary } from '../redux/ActionCreators';
 import { Switch, Route, Redirect,withRouter} from 'react-router-dom';
 
 
 const mapStateToProps = state => {
   return {
     staffs: state.staffs,
-    departments: state.departments
+    departments: state.departments,
+    salary: state.salary
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
   postStaff: (name,doB,salaryScale,startDate,departmentId,annualLeave,overTime) => dispatch(postStaff(name,doB,salaryScale,startDate,departmentId,annualLeave,overTime)),
   fetchStaffs: () => {dispatch(fetchStaffs())},
-  fetchDeapartments: () => {dispatch(fetchDeapartments())}
+  fetchDeapartments: () => {dispatch(fetchDeapartments())},
+  fetchSalary: () => {dispatch(fetchSalary())}
 })
 
 class Main extends Component {
 
   componentDidMount(){
     this.props.fetchStaffs();
-    this.props.fetchDeapartments()
+    this.props.fetchDeapartments();
+    this.props.fetchSalary();
   }
 
   render(){
-
     const StaffWithId = ({match})=>{
       return (
         <StaffDetail staff={this.props.staffs.staffs.filter((staff)=>staff.id === parseInt(match.params.staffId,10))}
@@ -57,7 +59,7 @@ class Main extends Component {
             <Route path="/nhanvien/:staffId" component={StaffWithId}/>
             <Route exact path="/phongban" component={()=><PhongBan department={this.props.departments}/>} />
             <Route path="/phongban/:departmentId" component={DepartmentWithId}/>
-            <Route path="/bangluong" component={()=><BangLuong salary={this.props.staffs}/>} />
+            <Route path="/bangluong" component={()=><BangLuong salary={this.props.salary}/>} />
             <Redirect to="/nhanvien" />
           </Switch>
         <Footer />

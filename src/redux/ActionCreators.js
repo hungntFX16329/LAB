@@ -15,7 +15,7 @@ export const postStaff = (name,doB,salaryScale,startDate,departmentId,annualLeav
         overTime: overTime
     }
     newStaff.image = '/assets/images/alberto.png';
-    newStaff.salary = '5000000';
+    
 
     return fetch(baseUrl + 'staffs', {
         method: 'POST',
@@ -123,4 +123,41 @@ export const departmentsFailed = (errmess) => ({
 export const addDepartments = (departments)=>({
     type : ActionTypes.ADD_DEPARTMENTS,
     payload : departments
+})
+
+export const fetchSalary = ()=> (dispatch) => {
+    dispatch(salaryLoading(true));
+
+    return fetch(baseUrl + 'staffsSalary')
+    .then(response => {
+        if(response.ok){
+            return response;
+        }
+        else {
+            var error = new Error('Error '+ response.status+ ': ' + response.statusText);
+            error.response = response;
+            throw error;
+        }
+    },
+    error => {
+        var errmess = new Error(error.message);
+        throw errmess;
+    })
+    .then(response => response.json())
+    .then(salary => dispatch(addSalary(salary)))
+    .catch(error => dispatch(salaryFailed(error.message)))
+}
+
+export const salaryLoading = ()=> ({
+    type : ActionTypes.SALARY_LOADING
+})
+
+export const salaryFailed = (errmess) => ({
+    type : ActionTypes.SALARY_FAILED,
+    payload : errmess
+})
+
+export const addSalary = (salary)=>({
+    type : ActionTypes.ADD_SALARY,
+    payload : salary
 })

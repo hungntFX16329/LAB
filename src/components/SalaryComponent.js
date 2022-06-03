@@ -27,7 +27,7 @@ function BangLuong(props){
     }
     else {
         let [ma_nhan_vien,set_ma_nhan_vien] = useState(true)
-        let bangluong = props.salary.staffs
+        let bangluong = props.salary.salary
         .sort((a,b)=> ma_nhan_vien ? a.id - b.id : b.id - a.id)
         .map((staff)=>{
             return(
@@ -40,7 +40,7 @@ function BangLuong(props){
                             <CardText>Số ngày làm thêm: {staff.overTime}</CardText>
                         </CardBody>
                         <CardFooter className="text-center">
-                            Lương: {Math.round(staff.salaryScale*3000000 + staff.overTime*200000)}
+                            Lương: {staff.salary}
                         </CardFooter>
                     </Card>
                 </div>
