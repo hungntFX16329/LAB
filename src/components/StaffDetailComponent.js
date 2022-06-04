@@ -9,7 +9,8 @@ import dateFormat from 'dateformat';
 class StaffDetail extends Component{
     constructor(props){
         super(props);
-        //let staff = this.props.staff[0]
+        //let a = this.props.department.filter((d)=>d.id ===this.props.staff[0].departmentId)
+
         this.state={
             name: this.props.staff[0].name,
             doB: this.props.staff[0].doB,
@@ -41,26 +42,18 @@ class StaffDetail extends Component{
   
     handleSubmit = (event)=>{
         event.preventDefault();
-        /*
-        const newStaff = {
-            name: this.state.name,
-            doB: this.state.doB,
-            salaryScale: this.state.salaryScale,
-            startDate: this.state.startDate,
-            department: this.state.department,
-            annualLeave: this.state.annualLeave,
-            overTime: this.state.overTime,
-            image:'/assets/images/alberto.png'
-        }
-        */
         alert(JSON.stringify(this.state))
-        //alert(JSON.stringify(newStaff))
-        this.props.onUpdateStaff(this.state)
+        //this.props.onUpdateStaff(this.state)
     }
 
 
 
     render(){
+        console.log(this.props.department);
+        console.log(this.props.staff)
+        let a = this.props.department.filter((d)=>d.id ===this.props.staff[0].departmentId)
+        console.log(a);
+        console.log(this.props.staff[0].departmentId);
         if(this.props.staff !=null){
             return (
             <div className="container">

@@ -47,45 +47,8 @@ class NhanVien extends Component{
 
     handleSubmit = (values)=>{
         alert(JSON.stringify(values));
-        /*
-        console.log(values);
-        console.log(values.department);
-        //let a = this.props.department.departments.filter(department=>department.name === values.department)
-        let staff={
-            name: values.name,
-            doB: values.doB,
-            salaryScale: values.salaryScale,
-            startDate: values.startDate,
-            department: this.state.department,
-            annualLeave: values.annualLeave,
-            overTime: values.overTime,
-            image:'/assets/images/alberto.png'
-        }
-        console.log(staff);
-        //let value = JSON.parse(JSON.stringify(values))
-        this.props.postStaff(staff)
-        */
-        
         let a = this.props.department.departments.filter(department=>department.name === values.department)
         this.props.postStaff(values.name,values.doB,values.salaryScale,values.startDate,a[0].id,values.annualLeave,values.overTime)
-        
-        /*
-        const newStaff = {
-            name: value.name,
-            doB: value.doB,
-            salaryScale: value.salaryScale,
-            startDate: value.startDate,
-            department:  {
-                id: "Dept01",
-                name: value.department,
-                numberOfStaff: 1
-            },
-            annualLeave: value.annualLeave,
-            overTime: value.overTime,
-            image:'/assets/images/alberto.png'
-        }
-        */
-       //this.props.onAdd(newStaff)
     }
 
     render(){

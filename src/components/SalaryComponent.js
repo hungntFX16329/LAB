@@ -2,6 +2,7 @@ import React, { useState }from "react";
 import { Card, CardText, CardBody, CardFooter, Breadcrumb, BreadcrumbItem, CardHeader } from "reactstrap";
 import { Link } from 'react-router-dom';
 import { Loading } from './LoadingComponent';
+import { FadeTransform} from 'react-animation-components';
 
 function BangLuong(props){
 
@@ -32,6 +33,11 @@ function BangLuong(props){
         .map((staff)=>{
             return(
                 <div key={staff.id} className="col-12 col-md-6 col-lg-4 mt-2 mb-2 rounded-3" color="light">
+                    <FadeTransform
+                in
+                transformProps={{
+                    exitTransform: 'scale(0.5) translateY(-50%)'
+                }}>
                     <Card>
                         <CardHeader className="text-center">{staff.name}</CardHeader>
                         <CardBody className="text-center">
@@ -43,6 +49,7 @@ function BangLuong(props){
                             Lương: {staff.salary}
                         </CardFooter>
                     </Card>
+                    </FadeTransform>
                 </div>
             )
         })
