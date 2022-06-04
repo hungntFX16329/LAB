@@ -1,20 +1,16 @@
 import React, { Component } from 'react';
-import { Breadcrumb, BreadcrumbItem, Button, CardText, CardTitle,Col, Row,Label, Modal, ModalBody,ModalHeader} from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Button, CardText, CardTitle,Col, Input,Label, Modal, ModalBody,ModalHeader,Form, FormGroup} from 'reactstrap';
 import { Link } from 'react-router-dom';
-import { Control, LocalForm } from 'react-redux-form';
+//import { Control, LocalForm } from 'react-redux-form';
 import dateFormat from 'dateformat';
-import { Loading } from './LoadingComponent';
+//import { Loading } from './LoadingComponent';
 
-//const required = (val) => val && val.length;
-//const maxLength = (len) => (val) => !(val) || (val.length <= len)
-//const minLength = (len) => (val) => (val) && (val.length >= len)
 
 class StaffDetail extends Component{
     constructor(props){
         super(props);
-        //let a = this.props.department.filter((d)=>d.id === this.props.staff[0].departmentId)
+        //let staff = this.props.staff[0]
         this.state={
-            id: this.props.staff[0].id,
             name: this.props.staff[0].name,
             doB: this.props.staff[0].doB,
             salaryScale:this.props.staff[0].salaryScale,
@@ -26,78 +22,46 @@ class StaffDetail extends Component{
         }
         this.handleSubmit= this.handleSubmit.bind(this);
         this.toggleModel= this.toggleModel.bind(this);
+        this.handleInputChange= this.handleInputChange.bind(this);
     }
-
-    toggleModel(staff){
-        console.log(staff);
-        let a = this.props.department.filter((d)=>d.id === this.props.staff[0].departmentId)
-        this.setState({
-            isModelOpen : !this.state.isModelOpen,
-            name: staff.name,
-            doB: staff.doB,
-            salaryScale:staff.salaryScale,
-            startDate:staff.startDate,
-            department: a[0].name,
-            annualLeave:staff.annualLeave,
-            overTime:staff.overTime
-        })
-    }
-   /*
-    handleInputChange = (event) => {
+    handleInputChange(event){
         const target = event.target;
         const value = target.value;
         const name = target.name;
         this.setState({
-          [name]: value
-        });
-      };
-    */
-    handleSubmit = (value)=>{
-        console.log(value);
-        console.log(this.state);
-        /*
-        this.setState({
-            name: value.name,
-            doB: value.doB,
-            salaryScale:value.salaryScale,
-            startDate:value.startDate,
-            department: value.department,
-            annualLeave:value.annualLeave,
-            overTime:value.overTime
+            [name]: value
         })
+    }
+    toggleModel(){
+        this.setState({
+            ...this.state,
+            isModelOpen : !this.state.isModelOpen,
+        })
+    }
+  
+    handleSubmit = (event)=>{
+        event.preventDefault();
+        /*
+        const newStaff = {
+            name: this.state.name,
+            doB: this.state.doB,
+            salaryScale: this.state.salaryScale,
+            startDate: this.state.startDate,
+            department: this.state.department,
+            annualLeave: this.state.annualLeave,
+            overTime: this.state.overTime,
+            image:'/assets/images/alberto.png'
+        }
         */
-        //console.log(this.state);
+        alert(JSON.stringify(this.state))
+        //alert(JSON.stringify(newStaff))
+        this.props.onUpdateStaff(this.state)
     }
 
+
+
     render(){
-        console.log(this.state);
-        console.log(this.props.staff[0]);
-        if(this.props.isLoading) {
-            return(
-                <div className="container">
-                    <div className="row">
-                        <Loading />
-                    </div>
-                </div>
-            )
-        }
-        else if (this.props.errMess){
-            return(
-                <div className="container">
-                    <div className="row">
-                        <h4>{this.props.errMess}</h4>
-                    </div>
-                </div>
-            )
-        }
-        else
         if(this.props.staff !=null){
-            console.log(this.props.staff); 
-            console.log(this.props.staff[0].name);
-            console.log(this.props.staff[0].departmentId)
-            
-            //let a = this.props.department.filter((d)=>d.id === this.props.staff[0].departmentId)
-            //console.log(a);
             return (
             <div className="container">
                 <div className="row">
@@ -119,7 +83,7 @@ class StaffDetail extends Component{
                                 <CardText>Phòng ban: {this.state.department}</CardText>
                                 <CardText>Số ngày nghỉ còn lại: {this.state.annualLeave}</CardText>
                                 <CardText>Số ngày đã làm thêm: {this.state.overTime}</CardText>
-                                <Button color='primary' outline className="fa fa-pencil" onClick={()=>this.toggleModel(this.state)}> Edit information</Button>
+                                <Button color='primary' outline className="fa fa-pencil" onClick={()=>this.toggleModel()}> Edit information</Button>
                             </div>
                         </div>
                     </div>
@@ -130,127 +94,104 @@ class StaffDetail extends Component{
                 <Modal isOpen={this.state.isModelOpen} toggle={this.toggleModel}>
                     <ModalHeader toggle={this.toggleModel}>Sửa thông tin nhân viên</ModalHeader>
                     <ModalBody>
-                        <LocalForm onSubmit={this.handleSubmit}>
-                            <Row className="form-group">
+                    <Form onSubmit={this.handleSubmit}>
+                            <FormGroup row>
                                 <Label htmlFor="name" sm={4}>Tên</Label>
                                 <Col sm={8}>
-                                <Control.text 
-                                model=".name"
+                                <Input 
+                                type="text" 
                                 id="name" 
                                 name="name"
                                 placeholder="Tên"
-                                value={this.state.name}
-                                className="form-control"
-                                //onChange={this.handleInputChange}
-                                />
-                                
+                                value={this.state.name} 
+                                onChange={this.handleInputChange}/>
                                 </Col>
-                            </Row>
-                            <Row className="form-group">
+                            </FormGroup>
+                            <FormGroup row>
                                 <Label htmlFor="doB" sm={4}>Ngày sinh</Label>
                                 <Col sm={8}>
-                                <Control type="date" 
-                                model=".doB" 
+                                <Input 
+                                type="date" 
                                 id="doB" 
                                 name="doB"
-                                placeholder="dd/mm/yyyy"
-                                value={this.state.doB}
-                                //onChange={this.handleInputChange}
-                                className="form-control"
-                                //value={this.state.tenState}
-                               />
-                                
+                                placeholder="Ngày sinh"
+                                value={this.state.doB} 
+                                onChange={this.handleInputChange}/>
                                 </Col>
-                            </Row>
-                            <Row className="form-group">
+                            </FormGroup>
+                            <FormGroup row>
                                 <Label htmlFor="startDate" sm={4}>Ngày vào công ty</Label>
                                 <Col sm={8}>
-                                <Control type="date" 
-                                model=".startDate" 
+                                <Input 
+                                type="date" 
                                 id="startDate" 
                                 name="startDate"
-                                placeholder="dd/mm/yyyy"
-                                //onChange={this.handleInputChange}
-                                value={this.state.startDate}
-                                className="form-control"
-                                //value={this.state.tenState}
-                                />
-                                
+                                placeholder="startDate"
+                                value={this.state.startDate} 
+                                onChange={this.handleInputChange}/>
                                 </Col>
-                            </Row>
-                            <Row className="form-group">
+                            </FormGroup>
+                            <FormGroup row>
                                 <Label htmlFor="department" sm={4}>Phòng ban</Label>
                                 <Col sm={8}>
-                                <Control.select 
-                                model=".department" 
+                                <Input 
+                                type="select" 
                                 id="department" 
                                 name="department"
-                                //onChange={this.handleInputChange}
-                                value={this.state.department}
-                                className="form-control"
-                                >
-                                    <option></option>
+                                value={this.state.department} 
+                                onChange={this.handleInputChange}>
                                     <option>Sale</option>
                                     <option>HR</option>
                                     <option>Marketing</option>
                                     <option>IT</option>
                                     <option>Finance</option>
-                                </Control.select>
+                                </Input>
                                 </Col>
-                            </Row>
-                            <Row className="form-group">
+                            </FormGroup>
+                            <FormGroup row>
                                 <Label htmlFor="salaryScale" sm={4}>Hệ số lương</Label>
                                 <Col sm={8}>
-                                <Control type="number" 
-                                model=".salaryScale" 
+                                <Input 
+                                type="number" 
                                 id="salaryScale" 
                                 name="salaryScale"
                                 placeholder="1.0 -> 3.0"
-                                //onChange={this.handleInputChange}
-                                value={this.state.salaryScale}
-                                //value={this.state.tenState}
-                                className="form-control"
-                                />
+                                value={this.state.salaryScale} 
+                                onChange={this.handleInputChange}/>
                                 </Col>
-                            </Row>
-                            <Row className="form-group">
+                            </FormGroup>
+                            <FormGroup row>
                                 <Label htmlFor="annualLeave" sm={4}>Số ngày nghỉ còn lại</Label>
                                 <Col sm={8}>
-                                <Control type="number" 
-                                model=".annualLeave" 
+                                <Input 
+                                type="number" 
                                 id="annualLeave" 
                                 name="annualLeave"
                                 placeholder="Số ngày nghỉ còn lại"
-                                //onChange={this.handleInputChange}
-                                value={this.state.annualLeave}
-                                //value={this.state.tenState}
-                                className="form-control"
-                               />
+                                value={this.state.annualLeave} 
+                                onChange={this.handleInputChange}/>
                                 </Col>
-                            </Row>
-                            <Row className="form-group">
+                            </FormGroup>
+                            <FormGroup row>
                                 <Label htmlFor="overTime" sm={4}>Số ngày đã làm thêm</Label>
                                 <Col sm={8}>
-                                <Control type="number" 
-                                model=".overTime" 
+                                <Input 
+                                type="number" 
                                 id="overTime" 
                                 name="overTime"
                                 placeholder="Số ngày đã làm thêm"
-                                //onChange={this.handleInputChange}
-                                value={this.state.overTime}
-                                //value={this.state.tenState}
-                                className="form-control"
-                                />
+                                value={this.state.overTime} 
+                                onChange={this.handleInputChange}/>
                                 </Col>
-                            </Row>
-                            <Row className="form-group">
+                            </FormGroup>
+                            <FormGroup row>
                                 <Col >
                                     <Button type="submit" color="primary">
-                                        Cập nhật thông tin
+                                        Thêm
                                     </Button>
                                 </Col>
-                            </Row>
-                        </LocalForm>
+                            </FormGroup>
+                        </Form>
                     </ModalBody>
                 </Modal>
                 </div>
