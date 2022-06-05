@@ -46,7 +46,6 @@ class NhanVien extends Component{
     }
 
     handleSubmit = (values)=>{
-        alert(JSON.stringify(values));
         let a = this.props.department.departments.filter(department=>department.name === values.department)
         this.props.postStaff(values.name,values.doB,values.salaryScale,values.startDate,a[0].id,values.annualLeave,values.overTime)
     }

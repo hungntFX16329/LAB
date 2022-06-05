@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
 import { Breadcrumb, BreadcrumbItem, Button, CardText, CardTitle,Col, Input,Label, Modal, ModalBody,ModalHeader,Form, FormGroup} from 'reactstrap';
 import { Link } from 'react-router-dom';
-//import { Control, LocalForm } from 'react-redux-form';
 import dateFormat from 'dateformat';
-//import { Loading } from './LoadingComponent';
 
 
 class StaffDetail extends Component{
     constructor(props){
         super(props);
-        //let a = this.props.department.filter((d)=>d.id ===this.props.staff[0].departmentId)
-
+        let a = this.props.department.filter((d)=>d.id ===this.props.staff[0].departmentId)
         this.state={
+            id: this.props.staff[0].id,
             name: this.props.staff[0].name,
             doB: this.props.staff[0].doB,
             salaryScale:this.props.staff[0].salaryScale,
             startDate:this.props.staff[0].startDate,
-            department: this.props.staff[0].departmentId,
+            departmentId: a[0].name,
             annualLeave:this.props.staff[0].annualLeave,
             overTime:this.props.staff[0].overTime,
             image: "/assets/images/alberto.png"
@@ -42,18 +40,23 @@ class StaffDetail extends Component{
   
     handleSubmit = (event)=>{
         event.preventDefault();
-        alert(JSON.stringify(this.state))
-        //this.props.onUpdateStaff(this.state)
+      
+        const newStaff ={
+            id: this.state.id,
+            name: this.state.name,
+            doB: this.state.doB,
+            salaryScale:this.state.salaryScale,
+            startDate:this.state.startDate,
+            departmentId: this.state.departmentId,
+            annualLeave:this.state.annualLeave,
+            overTime:this.state.overTime,
+            image: "/assets/images/alberto.png"
+        }
+        
+        this.props.onUpdateStaff(newStaff)
     }
 
-
-
     render(){
-        console.log(this.props.department);
-        console.log(this.props.staff)
-        let a = this.props.department.filter((d)=>d.id ===this.props.staff[0].departmentId)
-        console.log(a);
-        console.log(this.props.staff[0].departmentId);
         if(this.props.staff !=null){
             return (
             <div className="container">
@@ -73,7 +76,7 @@ class StaffDetail extends Component{
                                 <CardTitle>Họ và tên: {this.state.name}</CardTitle>
                                 <CardText>Ngày sinh: {dateFormat(this.state.doB, "dd/mm/yyyy")}</CardText>
                                 <CardText>Ngày vào công ty: {dateFormat(this.state.startDate, "dd/mm/yyyy")}</CardText>
-                                <CardText>Phòng ban: {this.state.department}</CardText>
+                                <CardText>Phòng ban: {this.state.departmentId}</CardText>
                                 <CardText>Số ngày nghỉ còn lại: {this.state.annualLeave}</CardText>
                                 <CardText>Số ngày đã làm thêm: {this.state.overTime}</CardText>
                                 <Button color='primary' outline className="fa fa-pencil" onClick={()=>this.toggleModel()}> Edit information</Button>
@@ -125,19 +128,19 @@ class StaffDetail extends Component{
                                 </Col>
                             </FormGroup>
                             <FormGroup row>
-                                <Label htmlFor="department" sm={4}>Phòng ban</Label>
+                                <Label htmlFor="departmentId" sm={4}>Phòng ban</Label>
                                 <Col sm={8}>
                                 <Input 
                                 type="select" 
-                                id="department" 
-                                name="department"
-                                value={this.state.department} 
+                                id="departmentId" 
+                                name="departmentId"
+                                value={this.state.departmentId} 
                                 onChange={this.handleInputChange}>
-                                    <option>Sale</option>
-                                    <option>HR</option>
-                                    <option>Marketing</option>
-                                    <option>IT</option>
-                                    <option>Finance</option>
+                                    <option value='Dept01'>Sale</option>
+                                    <option value='Dept02'>HR</option>
+                                    <option value='Dept03'>Marketing</option>
+                                    <option value='Dept04'>IT</option>
+                                    <option value='Dept05'>Finance</option>
                                 </Input>
                                 </Col>
                             </FormGroup>
