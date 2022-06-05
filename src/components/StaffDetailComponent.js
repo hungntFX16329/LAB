@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Breadcrumb, BreadcrumbItem, Button, CardText, CardTitle,Col, Input,Label, Modal, ModalBody,ModalHeader,Form, FormGroup} from 'reactstrap';
 import { Link } from 'react-router-dom';
 import dateFormat from 'dateformat';
-
+import { FadeTransform } from 'react-animation-components';
 
 class StaffDetail extends Component{
     constructor(props){
@@ -73,13 +73,19 @@ class StaffDetail extends Component{
                                 <img width="100%" src={this.state.image} alt={this.state.name} />
                             </div>
                             <div className="col-9 col-md-8">
-                                <CardTitle>Họ và tên: {this.state.name}</CardTitle>
-                                <CardText>Ngày sinh: {dateFormat(this.state.doB, "dd/mm/yyyy")}</CardText>
-                                <CardText>Ngày vào công ty: {dateFormat(this.state.startDate, "dd/mm/yyyy")}</CardText>
-                                <CardText>Phòng ban: {this.state.departmentId}</CardText>
-                                <CardText>Số ngày nghỉ còn lại: {this.state.annualLeave}</CardText>
-                                <CardText>Số ngày đã làm thêm: {this.state.overTime}</CardText>
-                                <Button color='primary' outline className="fa fa-pencil" onClick={()=>this.toggleModel()}> Edit information</Button>
+                                <FadeTransform
+                                    in
+                                    transformProps={{
+                                        exitTransform: 'scale(0.5) translateY(-50%)'
+                                    }}>
+                                    <CardTitle>Họ và tên: {this.state.name}</CardTitle>
+                                    <CardText>Ngày sinh: {dateFormat(this.state.doB, "dd/mm/yyyy")}</CardText>
+                                    <CardText>Ngày vào công ty: {dateFormat(this.state.startDate, "dd/mm/yyyy")}</CardText>
+                                    <CardText>Phòng ban: {this.state.departmentId}</CardText>
+                                    <CardText>Số ngày nghỉ còn lại: {this.state.annualLeave}</CardText>
+                                    <CardText>Số ngày đã làm thêm: {this.state.overTime}</CardText>
+                                    <Button color='primary' outline className="fa fa-pencil" onClick={()=>this.toggleModel()}> Edit information</Button>
+                                </FadeTransform>
                             </div>
                         </div>
                     </div>
